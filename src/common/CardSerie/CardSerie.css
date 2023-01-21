@@ -1,0 +1,22 @@
+.cardSerieDesign {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+    height: 12em;
+    width: 8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: darkgrey;
+    color: rgb(4, 4, 4);
+    border-radius: 1em;
+    margin: 0.7em;
+}
+
+.posterDesign {
+
+    height: 7em;
+    width: 5em;
+}
