@@ -7,11 +7,7 @@ export const CardSerie = ({serie}) => {
     return (
         <div className='cardSerieDesign'>
             <div>{serie.tittle !== '' ? serie.tittle : "Nombre no disponible"}</div>
-            <div>{serie.year !== '' ? serie.year : "Año no disponible"}</div>
-            <div>{serie.genre !== '' ? serie.genre : "Género no disponible"}</div>
-            
-            {/* <div><img className='posterDesign' src={`${poster_default}${serie.poster_path}`}/></div>
-            <div>{serie.first_air_date !== '' ? serie.first_air_date : "TBA"}</div> */}
+            <div><img className='posterDesign' src={`${poster_default}${serie.poster_path}`}/></div>
         </div>
     )
 }

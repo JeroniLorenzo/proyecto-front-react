@@ -38,7 +38,8 @@ export const Login = () => {
                     let userPass = {
                         token : resultado,
                         user: decodificado._id,
-                        name: resultado.data.user[0].name
+                        name: resultado.data.user[0].name,
+                        nickname: resultado.data.user[0].nickname
 
                     }
                         
@@ -60,13 +61,14 @@ export const Login = () => {
 
     return (
         <div className='loginDesign'>
-            
+            <p>Email de usuario</p>
             <InputText 
                 type={"email"} 
                 name={"email"} 
                 placeholder={"Escribe tu email"} 
                 functionHandler={InputHandler}
             />
+            <p>Contraseña</p>
             <InputText 
                 type={"password"} 
                 name={"password"} 

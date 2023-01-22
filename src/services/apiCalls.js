@@ -18,8 +18,8 @@ export const getSeries = async () => {
 
 };
 
-export const getSearch = async (criteria) => {
-    return await axios.get(`${root}series/tittle/${criteria}`);
+export const getSearch = async () => {
+    return await axios.get(`${root}series/tittle/:tittle`);
 };
 
 export const postRent = async (body, token) => {

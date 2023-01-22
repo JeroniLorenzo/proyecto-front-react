@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
-import Logo from './camera.png';
+import Logo from './home.jpg';
 import { useSelector, useDispatch } from "react-redux";
 import { userData, logout } from "../../pages/User/userSlice";
 import { find } from '../../pages/serieSlice';
@@ -50,9 +50,9 @@ export const Header = () => {
 
     return (
         <div className='headerDesign'>
-            <div onClick={()=>navigate("/")} className='logoDesignHeader'><img className='cameraAvatar' src={Logo} alt="Camara"/></div>
+            <div onClick={()=>navigate("/")} className='logoDesignHeader'><img className='homeAvatar' src={Logo} alt="Home"/></div>
             <div className='searchDesign'>
-                <InputText type={"text"} name={"search"} placeholder={"Qué quieres buscar?"} functionHandler={handleSearch}/>
+                <InputText type={"text"} id = "barraBusqueda" name={"search"} placeholder={"Qué quieres buscar?"} functionHandler={handleSearch}/>
             </div>
 
             <div className='headerLinksDesign'>
@@ -60,7 +60,7 @@ export const Header = () => {
                 {datosReduxUsuario.userPass.token !== "" ?
 
                     (<>
-                        <div onClick = {()=>navigate("/profile")}className='linkDesign' >{datosReduxUsuario.userPass?.name}</div>
+                        <div onClick = {()=>navigate("/profile")}className='linkDesign' >{datosReduxUsuario.userPass?.nickname}</div>
                         
                         <div className='linkDesign' onClick={() => logOff()}>logout</div>
                     </>)

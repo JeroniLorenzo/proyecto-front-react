@@ -1,7 +1,14 @@
 .inputDesign {
+    height: 3em;
+    width: 20em;
+    border-radius: 5px;
+    background-color: rgb(75, 158, 240);
+    color: black;
+}
 
-    width: 8em;
-    border-radius: 1em;
-    background-color: lightslategrey;
-
+::placeholder{
+    color:black;
+}
+p{
+    text-decoration: underline;
 }

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { InputText } from '../../../common/InputText/InputText';
 import './Register.css';
 import { postRegistered } from '../../../services/apiCalls';
-
 export const Register = () => {
     const [usuario, setUsuario]= useState({
         name: '',
@@ -12,6 +12,8 @@ export const Register = () => {
         phone: '',
         nickname: ''
     })
+
+    const navigate = useNavigate();
 
     const registerInputHandler = (e) => {
         setUsuario((prevState)=>({...prevState,
@@ -23,23 +25,14 @@ export const Register = () => {
 
         postRegistered(usuario)
             .then(
-                resultado => {
 
-                    let registered = {
-                        name: resultado.name,
-                        surname: resultado.surname,
-                        email: resultado.email,
-                        password: resultado.password,
-                        phone: resultado.phone,
-                        nickname: resultado.nickname
-
-                    }
-
-                    dispatch(login({registered: registered}));
-
+                  newUser => {
+                      console.log(newUser)
                     setTimeout(()=>{
                         navigate("/")
                     },750);
+
+                    
                 }
             )
             .catch(error => console.log(error));

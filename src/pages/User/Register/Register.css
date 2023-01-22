@@ -4,9 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color:black;
+    color:beige;
     height: 85vh;
     width: 100vw;
-
-    background-color: lightcyan;
+    background-color: rgb(63, 110, 199);
 }
