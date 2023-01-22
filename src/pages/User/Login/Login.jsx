@@ -39,6 +39,9 @@ export const Login = () => {
                         token : resultado,
                         user: decodificado._id,
                         name: resultado.data.user[0].name,
+                        surname: resultado.data.user[0].surname,
+                        email: resultado.data.user[0].email,
+                        phone: resultado.data.user[0].phone,
                         nickname: resultado.data.user[0].nickname
 
                     }

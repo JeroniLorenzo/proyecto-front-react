@@ -18,7 +18,30 @@ export const Profile = () => {
 
     return(
         <div className='profileDesign'>
-            {userRDX.userPass.name}
+            <div className='profileCard'>
+                <header id="cabecera">Datos del usuario</header>
+            <div>
+                <p>Nombre:</p>
+                {userRDX.userPass.name}
+            </div>
+            <div>
+                <p>Apellido:</p>
+                {userRDX.userPass.surname}
+            </div>
+            <div>
+                <p>Email:</p>
+                {userRDX.userPass.email}
+            </div>
+            <div>
+                <p>Teléfono de contacto:</p>
+                {userRDX.userPass.phone}
+            </div>
+            <div>
+                <p>Nombre de usuario:</p>
+                {userRDX.userPass.nickname}
+            </div>
+            </div>
+            
         </div>
     )
 };

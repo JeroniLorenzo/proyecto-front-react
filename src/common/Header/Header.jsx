@@ -60,7 +60,7 @@ export const Header = () => {
                 {datosReduxUsuario.userPass.token !== "" ?
 
                     (<>
-                        <div onClick = {()=>navigate("/profile")}className='linkDesign' >{datosReduxUsuario.userPass?.nickname}</div>
+                        <div onClick = {()=>navigate("/profile")}className='linkDesign' >{datosReduxUsuario.userPass.nickname}</div>
                         
                         <div className='linkDesign' onClick={() => logOff()}>logout</div>
                     </>)

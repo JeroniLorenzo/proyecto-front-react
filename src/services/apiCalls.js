@@ -25,7 +25,7 @@ export const getSearch = async () => {
 export const postRent = async (body, token) => {
     let config = {
         method : 'post',
-        url: `${root}`, //endpoint al backend
+        url: `${root}rental/getAll`, //endpoint al backend
         body,
         headers:{
             'Authotization': 'Bearer' + token
