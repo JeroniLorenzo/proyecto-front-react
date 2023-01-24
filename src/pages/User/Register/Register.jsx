@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { InputText } from '../../../common/InputText/InputText';
 import './Register.css';
 import { postRegistered } from '../../../services/apiCalls';
+import { errorCheck } from '../../../services/utiles';
 export const Register = () => {
     const [usuario, setUsuario]= useState({
         name: '',
@@ -13,6 +14,15 @@ export const Register = () => {
         nickname: ''
     })
 
+    const [usuarioError, setUsuarioError]= useState({
+        nameError: '',
+        surnameError: '',
+        emailError: '',
+        passwordError: '',
+        phoneError: '',
+        nicknameError: ''
+    })
+
     const navigate = useNavigate();
 
     const registerInputHandler = (e) => {
@@ -20,6 +30,15 @@ export const Register = () => {
         [e.target.name] : e.target.value
         }))
     }
+
+    const registerErrorHandler = (e) => {
+        let error = '';
+        error= errorCheck(e.target.name, e.target.value);
+        setUsuarioError((prevState)=>({...prevState,
+        [e.target.name + 'Error'] : error
+        }))
+    }
+
 
     const signMe = () => {
 
@@ -41,17 +60,82 @@ export const Register = () => {
     return (
         <div className='registerDesign'>
             <p>Nombre</p>
-            <InputText  type={'text'} name = {'name'} placeholder={'nombre'} functionHandler={registerInputHandler}/>
+            <InputText  
+                type={'text'} 
+                name ={'name'}
+                className={usuarioError.nameError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
+                placeholder={'nombre'} 
+                functionHandler={registerInputHandler}
+                errorHandler={registerErrorHandler}
+            />
+            <div className='errorText'>
+                {usuarioError.nameError}
+            </div>
+
             <p>Apellido</p>
-            <InputText  type={'text'} name = {'surname'} placeholder={'apellido'} functionHandler={registerInputHandler}/>
+            <InputText 
+                type={'text'}
+                name = {'surname'}
+                className={usuarioError.surnameError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
+                placeholder={'apellido'}
+                functionHandler={registerInputHandler}
+                errorHandler={registerErrorHandler}
+            />
+            <div className='errorText'>
+                {usuarioError.surnameError}
+            </div>
+
             <p>Email</p>
-            <InputText type={'email'} name = {'email'} placeholder={'email'} functionHandler={registerInputHandler}/>
+            <InputText 
+                type={'email'} 
+                name = {'email'}
+                className={usuarioError.emailError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
+                placeholder={'email'} 
+                functionHandler={registerInputHandler}
+                errorHandler={registerErrorHandler}
+            />
+            <div className='errorText'>
+                {usuarioError.emailError}
+            </div>
+
             <p>Contraseña</p>
-            <InputText type={'password'} name = {'password'} placeholder={'contrasenya'} functionHandler={registerInputHandler}/>
+            <InputText 
+                type={'password'} 
+                name = {'password'}
+                className={usuarioError.passwordError === '' ? 'inputDesign' : 'inputDesign inputDesignError'} 
+                placeholder={'contrasenya'} 
+                functionHandler={registerInputHandler}
+                errorHandler={registerErrorHandler}
+            />
+            <div className='errorText'>
+                {usuarioError.passwordError}
+            </div>
+            
             <p>Teléfono de contacto</p>
-            <InputText type={'text'} name = {'phone'} placeholder={'telefono'} functionHandler={registerInputHandler}/>
+            <InputText 
+                type={'text'} 
+                name = {'phone'}
+                className={usuarioError.phoneError === '' ? 'inputDesign' : 'inputDesign inputDesignError'} 
+                placeholder={'telefono'} 
+                functionHandler={registerInputHandler}
+                errorHandler={registerErrorHandler}
+            />
+            <div className='errorText'>
+                {usuarioError.phoneError}
+            </div>
+
             <p>Nombre de usuario</p>
-            <InputText  type={'text'} name = {'nickname'} placeholder={'nombre de usuario'} functionHandler={registerInputHandler}/>
+            <InputText 
+                type={'text'} 
+                name = {'nickname'}
+                className={usuarioError.nicknameError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
+                placeholder={'nombre de usuario'} 
+                functionHandler={registerInputHandler}
+                errorHandler={registerErrorHandler}
+            />
+            <div className='errorText'>
+                {usuarioError.nicknameError}
+            </div>
             <div className='loginButtonDesign' onClick={()=>signMe()}>Sign in</div>
         </div>
     );

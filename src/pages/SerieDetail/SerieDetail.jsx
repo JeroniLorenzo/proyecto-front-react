@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SerieDetail.css';
+import dayjs from 'dayjs';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { serieData } from '../serieSlice';
 import { userData } from '../User/userSlice';
 import { poster_default } from '../../services/utiles';
+import { postRent } from '../../services/apiCalls';
 
 export const SerieDetail = () => {
 
     const detailRdx = useSelector(serieData);
     const detailUsr = useSelector(userData);
+    const navigate = useNavigate();
+    const [msg, setMsg] = useState('');
 
     const RentMe = () => {
+        
+        let body = {
+            idSerie : detailRdx.choosen.id,
+            idUser : detailUsr.userPass._id,
+            rentalDate : dayjs().format('DD/MM/YYYY'),
+            rentalDate : dayjs().add(7, 'days').format('DD/MM/YYYY'),
+            price: 5
+        }
 
+        postRent(body, detailUsr.userPass.token)
+            .then(resultado=>{
+                setMsg(resultado.data)
+
+                setTimeout(()=>{
+                    navigate('/profile');
+                },1500);
+            })
+            .catch(error =>{
+                setMsg(error.message)
+            })
     }
 
     return(
@@ -30,11 +54,14 @@ export const SerieDetail = () => {
                     {detailUsr.userPass.token !== '' &&
                     
                         <div onClick={()=>RentMe()} className='rentDesign'>ALQUILAME</div>
+                        
                     }
+                    
+                    <div>{msg}</div>
                 </div>
             
             }
         </div>
     )
 
-}
+};

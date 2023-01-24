@@ -52,10 +52,11 @@ export const Home = () => {
         <div className='homeDesign'>
 
             {datosReduxSeries.series.length > 0 ? (
-
+                
                 <div className='rosterDesign'>
                     {datosReduxSeries.series.map(
                         serie => {
+                    
                             return (
                                 <div onClick={() => Choosen(serie)} key={serie._id}>
                                     <CardSerie serie={serie} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { InputText } from '../../../common/InputText/InputText';
 import { postLogin } from '../../../services/apiCalls';
-import { Decoder } from '../../../services/utiles';
+import { Decoder, errorCheck } from '../../../services/utiles';
 import { useSelector, useDispatch } from "react-redux";
 import { userData, login } from '../userSlice';
 import './Login.css';
@@ -17,6 +17,10 @@ export const Login = () => {
         email: '',
         password: ''
     })
+    const [credencialesError, setCredencialesError] = useState({
+        emailError: '',
+        passwordError: ''
+    })
 
     const navigate = useNavigate();
 
@@ -30,17 +34,25 @@ export const Login = () => {
 
     const Logeame = () => {
 
+        for(const property in credencialesError){
+            if(credencialesError[property]!== ''){
+                return;
+            }
+        }
+
         postLogin(credenciales)
             .then(
                 resultado => {
 
                     let decodificado = Decoder(resultado.data.token);
+
                     let userPass = {
-                        token : resultado,
+                        token : resultado.data.token,
                         user: decodificado._id,
                         name: resultado.data.user[0].name,
                         surname: resultado.data.user[0].surname,
                         email: resultado.data.user[0].email,
+                        rol: resultado.data.user[0].rol,
                         phone: resultado.data.user[0].phone,
                         nickname: resultado.data.user[0].nickname
 
@@ -62,22 +74,43 @@ export const Login = () => {
         }
     },[])
 
+    const loginErrorHandler = (e)=>{
+        let error = '';
+
+        error = errorCheck(e.target.name, e.target.value);
+
+        setCredencialesError((prevState)=>({...prevState,
+        [e.target.name + 'Error']: error
+    }));
+
+    }
+
     return (
         <div className='loginDesign'>
             <p>Email de usuario</p>
             <InputText 
                 type={"email"} 
-                name={"email"} 
+                name={"email"}
+                className={credencialesError.emailError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
                 placeholder={"Escribe tu email"} 
                 functionHandler={InputHandler}
+                errorHandler={loginErrorHandler}
             />
+            <div className='errorText'>
+                {credencialesError.emailError}
+            </div>
             <p>Contraseña</p>
             <InputText 
                 type={"password"} 
-                name={"password"} 
+                name={"password"}
+                className={credencialesError.passwordError === '' ? 'inputDesign' : 'inputDesign inputDesignError'} 
                 placeholder={"Escribe tu contraseña"} 
                 functionHandler={InputHandler}
+                // errorHandler={loginErrorHandler}
             />
+            {/* <div className='errorText'>
+                {credencialesError.passwordError}
+            </div> */}
 
             <div className='loginButtonDesign' onClick={()=>Logeame()}>LOGIN</div>
         </div>

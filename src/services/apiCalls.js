@@ -18,18 +18,32 @@ export const getSeries = async () => {
 
 };
 
-export const getSearch = async () => {
-    return await axios.get(`${root}series/tittle/:tittle`);
+export const getSearch = async (busqueda) => {
+
+    return await axios.get(`${root}series/tittle/${busqueda}`);
 };
 
 export const postRent = async (body, token) => {
-    let config = {
+    let config = { 
         method : 'post',
-        url: `${root}rental/getAll`, //endpoint al backend
+        url: `${root}rental/newRental`, //endpoint al backend
         body,
         headers:{
             'Authotization': 'Bearer' + token
         }
     }
     return await axios.post(config);
+};
+
+export const allUsersAdmin = async (body, token) => {
+    let config = {
+             method: 'post', 
+             url : `${root}/users/getAll`,
+             body,
+             headers: { 
+                 'Authorization': 'Bearer ' + token
+               }
+         }
+    
+         return await axios.post(config);
 };

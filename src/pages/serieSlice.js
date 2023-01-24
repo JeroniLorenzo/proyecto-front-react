@@ -18,12 +18,18 @@ export const serieSlice = createSlice({
           ...state,
           ...action.payload
         }
+      },
+      clear: (state, action) => {
+        return {
+          ...state,
+          ...action.payload
+        }
       }
     }
     
 });
 
-export const { select, find } = serieSlice.actions;
+export const { select, find, clear } = serieSlice.actions;
 
 export const serieData = (state) => state.serie;
 

@@ -1,6 +1,6 @@
 .inputDesign {
     height: 3em;
-    width: 20em;
+    width: 23em;
     border-radius: 5px;
     background-color: rgb(75, 158, 240);
     color: black;
@@ -11,4 +11,8 @@
 }
 p{
     text-decoration: underline;
+}
+
+.inputDesignError{
+    border: 0.2em solid red;
 }
