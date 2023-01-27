@@ -24,26 +24,34 @@ export const getSearch = async (busqueda) => {
 };
 
 export const postRent = async (body, token) => {
-    let config = { 
-        method : 'post',
-        url: `${root}rental/newRental`, //endpoint al backend
-        body,
-        headers:{
-            'Authotization': 'Bearer' + token
-        }
-    }
-    return await axios.post(config);
+
+    // let config = { 
+    //     // method : 'post',
+    //     // url: `${root}rentals/newRental`, //endpoint al backend
+    //     // body,
+    //     headers:{
+    //         'Authotization': 'Bearer' + token
+    //     }
+    //}
+    let config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
+    return await axios.post(`${root}rentals/newRental`, body, config );
 };
 
-export const allUsersAdmin = async (body, token) => {
-    let config = {
-             method: 'post', 
-             url : `${root}/users/getAll`,
-             body,
-             headers: { 
-                 'Authorization': 'Bearer ' + token
-               }
-         }
+export const allRentalsAdmin = async (body, token) => {
+    // let config = {
+    //          method: 'post', 
+    //          url : `${root}/users/getAll`,
+    //          body,
+    //          headers: { 
+    //              'Authorization': 'Bearer ' + token
+    //            }
+    //      }
     
-         return await axios.post(config);
+    //      return await axios.post(config);
+         let config = {
+            headers: { Authorization: `Bearer ${token}` },
+        };
+        return await axios.post(`${root}rentals/getAll`, body, config );
 };

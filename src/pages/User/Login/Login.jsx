@@ -49,6 +49,7 @@ export const Login = () => {
                     let userPass = {
                         token : resultado.data.token,
                         user: decodificado._id,
+                        _id: resultado.data.user[0]._id,
                         name: resultado.data.user[0].name,
                         surname: resultado.data.user[0].surname,
                         email: resultado.data.user[0].email,
@@ -57,6 +58,7 @@ export const Login = () => {
                         nickname: resultado.data.user[0].nickname
 
                     }
+                    
                         
                     dispatch(login({userPass: userPass}));
 

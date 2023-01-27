@@ -16,15 +16,17 @@ export const SerieDetail = () => {
     const [msg, setMsg] = useState('');
 
     const RentMe = () => {
-        
+        const euro = "€"
         let body = {
-            idSerie : detailRdx.choosen.id,
+            idSerie : detailRdx.choosen._id,
+            tittleSerie : detailRdx.choosen.tittle,
             idUser : detailUsr.userPass._id,
+            nameUser : detailUsr.userPass.name,
             rentalDate : dayjs().format('DD/MM/YYYY'),
-            rentalDate : dayjs().add(7, 'days').format('DD/MM/YYYY'),
-            price: 5
+            returnDate : dayjs().add(7, 'days').format('DD/MM/YYYY'),
+            price: 5 + euro
         }
-
+console.log(body)
         postRent(body, detailUsr.userPass.token)
             .then(resultado=>{
                 setMsg(resultado.data)
@@ -57,7 +59,7 @@ export const SerieDetail = () => {
                         
                     }
                     
-                    <div>{msg}</div>
+                     {/* <div>{[msg]}</div> */}
                 </div>
             
             }

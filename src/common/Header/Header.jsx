@@ -67,13 +67,16 @@ export const Header = () => {
         <div className='headerDesign'>
             <div onClick={()=>resetHome()} className='logoDesignHeader'><img className='homeAvatar' src={Logo} alt="Home"/></div>
             <div className='searchDesign'>
-                <InputText 
-                    type={"text"} 
-                    name={"search"} 
-                    placeholder={"Qué quieres buscar?"} 
-                    functionHandler={handleSearch}
-                    errorHandler={searchErrorHandler}
-                />
+                <div className='barra'>
+                    <InputText 
+                        type={"text"} 
+                        name={"search"} 
+                        placeholder={"Qué quieres buscar?"} 
+                        functionHandler={handleSearch}
+                        errorHandler={searchErrorHandler}
+                    />
+                </div>
+                
             </div>
             <div className='headerLinksDesign'>
 

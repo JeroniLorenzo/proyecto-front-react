@@ -3,16 +3,18 @@ import './Admin.css';
 import {useNavigate} from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { userData } from '../userSlice';
-import { allUsersAdmin } from '../../../services/apiCalls';
+import { serieData } from '../../serieSlice';
+import { allRentalsAdmin } from '../../../services/apiCalls';
 
 export const Admin = () => {
 
     const navigate = useNavigate();
 
-
     const userRDX = useSelector(userData);
+    const dataRDX = useSelector(serieData);
 
-    const [allUsers, setAllUsers] = useState([]);
+
+    const [allRentals, setAllRentals] = useState([]);
 
     useEffect(()=>{
         
@@ -24,26 +26,30 @@ export const Admin = () => {
 
     useEffect(()=>{
 
-        if(allUsers.length === 0){
+        if(allRentals.length === 0){
 
-            allUsersAdmin()
+            allRentalsAdmin()
                 .then(resultado => {
 
-                    setAllUsers(resultado);
+                    setAllRentals(resultado);
                 })
                 .catch(error => console.log(error));
         };
 
-    },[allUsers]);
+    },[allRentals]);
 
     return (
         <div className='adminDesign'>
-            {allUsers.length > 0 &&
+            {allRentals.length > 0 &&
             
-                allUsers.map(
-                    user => {
+                allRentals.map(
+                    
+                    rentals => {
                         return (
-                            <div key={user.id}>{user.name} {user.surname}</div>
+                            <div className='adminDesign'>
+                                {rentals.userRDX.userPass.name}
+                                {rentals.dataRDX.userPass.tittle}
+                            </div>
                         )
                     }
                 )
