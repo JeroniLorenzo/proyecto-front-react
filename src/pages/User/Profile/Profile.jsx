@@ -44,16 +44,12 @@ export const Profile = () => {
                     {userRDX.userPass.nickname}
                 </div>
             </div>
-            <div className='profileCard'>
+            {/* <div className='profileCard'>
                 <header id="cabecera">Serie Alquilada</header>
                 <div>
                     {dataRDX.choosen.tittle}
                 </div>
                 
-            </div>
-            {/* <div>
-               <p>Alquileres</p> 
-                {dataRDX.choosen.tittle}
             </div> */}
             
         </div>

@@ -41,20 +41,20 @@ export const errorCheck = (name, value) => {
                 return "";
             }
 
-        // case 'password':
+         case 'password':
 
-        //     if (value.length < 8) {
-        //         return "Write 8 characters at least"
-        //     } else {
+             if (value.length < 8) {
+                 return "Write 8 characters at least"
+             } else {
 
-        //         //Checking the password format....
+                 //Checking the password format....
 
-        //         if (! /[\d()+-]/g.test(value)) {
-        //             return "Password en formato inválido";
-        //         } else {
-        //             return "";
-        //         }
-        //     }
+                if (! /[\d()+-]/g.test(value)) {
+                    return "Password en formato inválido";
+                } else {
+                    return "";
+                }
+            }
 
         default:
             console.log("what are you sending to me????");

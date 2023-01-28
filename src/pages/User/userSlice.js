@@ -1,6 +1,9 @@
+/* Creating a slice of the Redux store. */
 import { createSlice } from '@reduxjs/toolkit';
 
+/* Creating a slice of the Redux store. */
 export const userSlice = createSlice({
+    /* Creating a slice of the Redux store. */
     name: 'user',
     initialState: {
       userPass: {
@@ -9,7 +12,10 @@ export const userSlice = createSlice({
       }
     },
     reducers: {
+      /* A reducer. It is a function that takes the current state and an action, and returns a new
+      state. */
       login: (state, action) => {
+        /* Returning a new state. */
         return {
           ...state,
           ...action.payload

@@ -108,11 +108,11 @@ export const Login = () => {
                 className={credencialesError.passwordError === '' ? 'inputDesign' : 'inputDesign inputDesignError'} 
                 placeholder={"Escribe tu contraseña"} 
                 functionHandler={InputHandler}
-                // errorHandler={loginErrorHandler}
+                errorHandler={loginErrorHandler}
             />
-            {/* <div className='errorText'>
+            <div className='errorText'>
                 {credencialesError.passwordError}
-            </div> */}
+            </div>
 
             <div className='loginButtonDesign' onClick={()=>Logeame()}>LOGIN</div>
         </div>

@@ -24,7 +24,7 @@ export const getSearch = async (busqueda) => {
 };
 
 export const postRent = async (body, token) => {
-
+console.log('este es el del token',token)
     // let config = { 
     //     // method : 'post',
     //     // url: `${root}rentals/newRental`, //endpoint al backend
