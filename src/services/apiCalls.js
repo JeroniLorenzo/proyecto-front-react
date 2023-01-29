@@ -28,14 +28,6 @@ export const getSearch = async (busqueda, token) => {
 
 export const postRent = async (body, token) => {
 
-    // let config = { 
-    //     // method : 'post',
-    //     // url: `${root}rentals/newRental`, //endpoint al backend
-    //     // body,
-    //     headers:{
-    //         'Authotization': 'Bearer' + token
-    //     }
-    //}
     let config = {
         headers: { Authorization: `Bearer ${token}` }
     };
@@ -44,16 +36,6 @@ export const postRent = async (body, token) => {
 
 export const allRentalsAdmin = async (token) => {
 
-    // let config = {
-    //          method: 'post', 
-    //          url : `${root}/users/getAll`,
-    //          body,
-    //          headers: { 
-    //              'Authorization': 'Bearer ' + token
-    //            }
-    //      }
-
-    //      return await axios.post(config);
     let config = {
         headers: { Authorization: `Bearer ${token}` },
     };
