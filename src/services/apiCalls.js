@@ -4,12 +4,12 @@ const root = 'http://localhost:5500/';
 
 export const postLogin = async (credenciales) => {
 
-     return await axios.post(`${root}users/login`, credenciales);
+    return await axios.post(`${root}users/login`, credenciales);
 };
 
 export const postRegistered = async (body) => {
 
-     return await axios.post(`${root}users/newUser`, body)
+    return await axios.post(`${root}users/newUser`, body)
 };
 
 export const getSeries = async () => {
@@ -18,9 +18,12 @@ export const getSeries = async () => {
 
 };
 
-export const getSearch = async (busqueda) => {
+export const getSearch = async (busqueda, token) => {
+    let config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
 
-    return await axios.get(`${root}series/tittle/${busqueda}`);
+    return await axios.get(`${root}series/tittle/${busqueda}`, config);
 };
 
 export const postRent = async (body, token) => {
@@ -36,7 +39,7 @@ export const postRent = async (body, token) => {
     let config = {
         headers: { Authorization: `Bearer ${token}` }
     };
-    return await axios.post(`${root}rentals/newRental`, body, config );
+    return await axios.post(`${root}rentals/newRental`, body, config);
 };
 
 export const allRentalsAdmin = async (token) => {
@@ -49,11 +52,20 @@ export const allRentalsAdmin = async (token) => {
     //              'Authorization': 'Bearer ' + token
     //            }
     //      }
-    
+
     //      return await axios.post(config);
-         let config = {
-            headers: { Authorization: `Bearer ${token}` },
-        };
-        return await axios.get(`${root}rentals/getAll`, config );
-        
+    let config = {
+        headers: { Authorization: `Bearer ${token}` },
+    };
+    return await axios.get(`${root}rentals/getAll`, config);
+
+};
+
+export const userRentals = async (token) => {
+
+    let config = {
+        headers: { Authorization: `Bearer ${token}` },
+    };
+    return await axios.get(`${root}rentals/userRentals`, config);
+
 };
