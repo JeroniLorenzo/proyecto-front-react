@@ -34,6 +34,7 @@ export const Login = () => {
 
     const Logeame = () => {
 
+        /* Checking if there is any error in the form. */
         for(const property in credencialesError){
             if(credencialesError[property]!== ''){
                 return;

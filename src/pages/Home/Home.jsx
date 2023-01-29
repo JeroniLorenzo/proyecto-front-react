@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { serieData, select } from '../serieSlice';
 
+/* A React component that is fetching data from an API and displaying it in a card. */
 export const Home = () => {
 
     const dispatch = useDispatch();
@@ -48,11 +49,13 @@ export const Home = () => {
 
     }
 
+   /* A ternary operator. */
     return (
         <div className='homeDesign'>
 
             {datosReduxSeries.series.length > 0 ? (
                 
+                /* Mapping the data from the API and displaying it in a card. */
                 <div className='rosterDesign'>
                     {datosReduxSeries.series.map(
                         serie => {
@@ -72,8 +75,10 @@ export const Home = () => {
                 (
 
 
+                    /* A ternary operator. */
                     series.length > 0 ? (
 
+                        /* Mapping the data from the API and displaying it in a card. */
                         <div className='rosterDesign'>
                             {series.map(
                                 serie => {

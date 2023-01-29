@@ -26,11 +26,11 @@ export const SerieDetail = () => {
             returnDate : dayjs().add(7, 'days').format('DD/MM/YYYY'),
             price: 5 + euro
         }
+        console.log(body)
 
         postRent(body, detailUsr.userPass.token)
             .then(resultado=>{
                 setMsg(resultado.data.data)
-                console.log(resultado.data.data)
 
                 setTimeout(()=>{
                     navigate('/');

@@ -24,7 +24,7 @@ export const getSearch = async (busqueda) => {
 };
 
 export const postRent = async (body, token) => {
-console.log('este es el del token',token)
+
     // let config = { 
     //     // method : 'post',
     //     // url: `${root}rentals/newRental`, //endpoint al backend
@@ -39,7 +39,8 @@ console.log('este es el del token',token)
     return await axios.post(`${root}rentals/newRental`, body, config );
 };
 
-export const allRentalsAdmin = async (body, token) => {
+export const allRentalsAdmin = async (token) => {
+
     // let config = {
     //          method: 'post', 
     //          url : `${root}/users/getAll`,
@@ -53,5 +54,6 @@ export const allRentalsAdmin = async (body, token) => {
          let config = {
             headers: { Authorization: `Bearer ${token}` },
         };
-        return await axios.post(`${root}rentals/getAll`, body, config );
+        return await axios.get(`${root}rentals/getAll`, config );
+        
 };
