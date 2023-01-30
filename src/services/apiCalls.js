@@ -43,11 +43,11 @@ export const allRentalsAdmin = async (token) => {
 
 };
 
-export const userRentals = async (token) => {
+export const userRentals = async (token, id) => {
 
     let config = {
         headers: { Authorization: `Bearer ${token}` },
     };
-    return await axios.get(`${root}rentals/userRentals`, config);
+    return await axios.get(`${root}rentals/userRentals/${id}`, config);
 
 };

@@ -11,11 +11,6 @@ export const Profile = () => {
     const navigate = useNavigate();
     const [rentals, setRentals] = useState([]);
     const userRDX = useSelector(userData);
-    const rentedSeriesByUser = (userId, rentalsList) => {
-        return rentalsList.filter(rental => rental.userId._id === userId);
-    }
-    const seriesRentedByUser = rentedSeriesByUser(userRDX.userPass._id, rentals);
-
 
     useEffect(() => {
         if (userRDX.userPass.token === '') {
@@ -29,7 +24,8 @@ export const Profile = () => {
 
             setTimeout(() => {
 
-                userRentals(userRDX.userPass.token)
+                userRentals(userRDX.userPass.token, userRDX.userPass._id)
+                
 
                     .then(
                         resultado => {
@@ -75,16 +71,15 @@ export const Profile = () => {
                 <p>Historial de Alquileres</p>
             </div>
                                      
-            {seriesRentedByUser.length > 0 &&
-                seriesRentedByUser.map(
-                    
+            {rentals.length > 0 &&
+                rentals.map(
                     rental => {
                         return (
                             <div key={rental._id}>      
                                 <table>     
                                     <tbody>
                                         <tr>
-                                            <td>{rental.serieId.tittle}</td>
+                                            <td>{rental.serieName}</td>
                                             <td>{rental.fechaInicio}</td>
                                             <td>{rental.fechaFin}</td>
                                         </tr>
@@ -94,6 +89,7 @@ export const Profile = () => {
                         )
                     }
                 )
+                
             }
 
         </div>

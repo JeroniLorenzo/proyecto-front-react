@@ -17,6 +17,7 @@ export const errorCheck = (name, value) => {
 
         case 'name':
         case 'surname':
+        case 'nickname':
 
             if (! /[a-z]/gi.test(value) ) {
                 return ("Formato de texto inválido");

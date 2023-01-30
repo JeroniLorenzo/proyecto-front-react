@@ -19,7 +19,7 @@ export const SerieDetail = () => {
         const euro = "€"
         let body = {
             idSerie : detailRdx.choosen._id,
-            tittleSerie : detailRdx.choosen.tittle,
+            serieName : detailRdx.choosen.tittle,
             idUser : detailUsr.userPass._id,
             nameUser : detailUsr.userPass.name,
             rentalDate : dayjs().format('DD/MM/YYYY'),
