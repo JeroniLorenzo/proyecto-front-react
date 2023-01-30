@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import Logo from './home.jpg';
 import { useSelector, useDispatch } from "react-redux";
-import { userData, login, logout } from "../../pages/User/userSlice";
+import { userData, logout } from "../../pages/User/userSlice";
 import { serieData, find, clear } from '../../pages/serieSlice';
 import { InputText } from '../InputText/InputText';
 import { getSearch } from '../../services/apiCalls';
@@ -27,7 +27,7 @@ export const Header = () => {
     useEffect(() => {
         if (search !== "") {
 
-            getSearch(search, datosReduxUsuario.userPass.token)
+            getSearch(search)
                 .then(
                     resultado => {
 
@@ -37,7 +37,6 @@ export const Header = () => {
                 .catch(error => console.log(error));
         } else if (search === "" && datosReduxSeries.series.length > 0) {
 
-            /* Clearing the state of the redux store. */
             dispatch(clear({ choosen: {}, series: [] }));
         }
     }, [search])
