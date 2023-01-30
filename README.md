@@ -2,7 +2,7 @@
 
 Con la API creada en el anterior proyecto, he hecho el front-end de una aplicación de alquiler de series.
 
-#Tecnologias usadas.
+# Tecnologias usadas.
 - ![Captura de pantalla_20230130_164805](https://user-images.githubusercontent.com/112971504/215524938-bd2c3bcc-7c78-4d74-9dff-4b8566dc9e8b.png) JavaScript.
 - ![Captura de pantalla_20230130_165038](https://user-images.githubusercontent.com/112971504/215525694-09c173b4-46d5-4625-ac04-f53d844e77a1.png) React.
 - ![Captura de pantalla_20230130_165152](https://user-images.githubusercontent.com/112971504/215525908-162c5954-c0b5-4905-aaa5-305e4a94fb65.png) CSS3.
